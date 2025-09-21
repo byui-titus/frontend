@@ -14,6 +14,7 @@ async function fetchMovies() {
         card.innerHTML = `
       <img src="${movie.poster}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
+      <p><strong>Vj:</strong> ${movie.vj}</p>
     `;
 
         // Click -> details page

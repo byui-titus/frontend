@@ -21,6 +21,7 @@ async function fetchMovie() {
     <p><strong>Genre:</strong> ${movie.genre}</p>
     <p><strong>Release Year:</strong> ${movie.releaseYear}</p>
     <p><strong>Rating:</strong> ${movie.rating}</p>
+    <p><strong>Vj:</strong> ${movie.vj}</p>
   `;
 }
 
