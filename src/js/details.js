@@ -22,6 +22,8 @@ async function fetchMovie() {
     <p><strong>Release Year:</strong> ${movie.releaseYear}</p>
     <p><strong>Rating:</strong> ${movie.rating}</p>
     <p><strong>Vj:</strong> ${movie.vj}</p>
+    <!-- ✅ Download Button -->
+    <a href="${movie.filePath}" download class="download-btn">⬇️ Download</a>
   `;
 }
 
