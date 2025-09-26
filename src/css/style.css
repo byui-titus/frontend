@@ -1,5 +1,51 @@
 /* General reset */
 
+
+/* Header */
+
+.site-header {
+    background: #1c1c1c;
+    padding: 15px 30px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #ffcc00;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+
+/* Footer */
+
+.site-footer {
+    background: #1c1c1c;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;

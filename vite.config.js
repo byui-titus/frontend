@@ -14,6 +14,7 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, "src/index.html"),
                 movieDetails: resolve(__dirname, "src/detail/details.html"),
+                allMovies: resolve(__dirname, "src/all/all.html"),
             },
         },
     },
