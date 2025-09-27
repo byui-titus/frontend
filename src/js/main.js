@@ -33,6 +33,26 @@ async function fetchMovies() {
     });
 }
 
+function generateVJButtons(movies) {
+    const vjList = document.getElementById("vj-list");
+
+    // Extract unique VJs
+    const vjs = [...new Set(movies.map(movie => movie.vj))];
+
+    vjs.forEach(vj => {
+        const btn = document.createElement("button");
+        btn.textContent = vj;
+
+        btn.addEventListener("click", () => {
+            const filteredMovies = movies.filter(movie => movie.vj === vj);
+            displayMovies(filteredMovies);
+        });
+
+        vjList.appendChild(btn);
+    });
+}
+
+
 fetchMovies();
 
 async function loadPartial(id, file) {
