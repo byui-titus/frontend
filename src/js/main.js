@@ -7,15 +7,22 @@ async function fetchMovies() {
     const container = document.getElementById("movies");
     container.innerHTML = "";
 
-    movies.forEach(movie => {
+    // Sort by createdAt (newest first)
+    movies.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+
+    // Limit to 8 movies (change 8 to whatever number you want, e.g. 6, 10)
+    const limitedMovies = movies.slice(0, 8);
+
+    limitedMovies.forEach(movie => {
         const card = document.createElement("div");
         card.classList.add("movie-card");
 
         card.innerHTML = `
-      <img src="${movie.poster}" alt="${movie.title}" />
-      <h3>${movie.title}</h3>
-      <p><strong>Vj:</strong> ${movie.vj}</p>
-    `;
+          <img src="${movie.poster}" alt="${movie.title}" />
+          <h3>${movie.title}</h3>
+          <p><strong>Vj:</strong> ${movie.vj}</p>
+        `;
 
         // Click -> details page
         card.addEventListener("click", () => {

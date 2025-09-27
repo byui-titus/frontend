@@ -124,3 +124,18 @@ body {
 #movie-details strong {
     color: #ffcc00;
 }
+
+.see-all-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffcc00;
+    color: #000;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.see-all-btn:hover {
+    background: #ffaa00;
+}
