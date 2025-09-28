@@ -15,6 +15,7 @@ export default defineConfig({
                 main: resolve(__dirname, "src/index.html"),
                 movieDetails: resolve(__dirname, "src/detail/details.html"),
                 allMovies: resolve(__dirname, "src/all/all.html"),
+                vjs: resolve(__dirname, "src/vj/vj.html"),
             },
         },
     },

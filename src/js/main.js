@@ -11,6 +11,7 @@ async function fetchMovies() {
     movies.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
 
+
     // Limit to 8 movies (change 8 to whatever number you want, e.g. 6, 10)
     const limitedMovies = movies.slice(0, 8);
 
@@ -33,27 +34,54 @@ async function fetchMovies() {
     });
 }
 
-function generateVJButtons(movies) {
-    const vjList = document.getElementById("vj-list");
-
-    // Extract unique VJs
-    const vjs = [...new Set(movies.map(movie => movie.vj))];
-
-    vjs.forEach(vj => {
-        const btn = document.createElement("button");
-        btn.textContent = vj;
-
-        btn.addEventListener("click", () => {
-            const filteredMovies = movies.filter(movie => movie.vj === vj);
-            displayMovies(filteredMovies);
-        });
-
-        vjList.appendChild(btn);
-    });
-}
-
 
 fetchMovies();
+
+async function fetchHeroVJs() {
+    try {
+        const res = await fetch(API_URL);
+        const movies = await res.json();
+
+        // Group movies by VJ
+        const vjMap = {};
+        movies.forEach(movie => {
+            if (!vjMap[movie.vj]) vjMap[movie.vj] = [];
+            vjMap[movie.vj].push(movie);
+        });
+
+        const heroContainer = document.getElementById("hero");
+        heroContainer.innerHTML = "<h2>Featured VJs</h2><div class='vj-scroll'></div>";
+
+        const scrollContainer = heroContainer.querySelector(".vj-scroll");
+
+        Object.keys(vjMap).forEach(vj => {
+            const vjDiv = document.createElement("div");
+            vjDiv.classList.add("vj-card");
+
+            // Pick a poster from the first movie of that VJ as card background
+
+            vjDiv.innerHTML = `
+        <div class="vj-bg" style="background-image: url('${bgPoster}');">
+          <div class="vj-overlay">
+            <h3>${vj}</h3>
+            <p>${vjMap[vj].length} movies</p>
+          </div>
+        </div>
+      `;
+
+            vjDiv.addEventListener("click", () => {
+                window.location.href = `vj/vj.html?vj=${encodeURIComponent(vj)}`;
+            });
+
+            scrollContainer.appendChild(vjDiv);
+        });
+    } catch (err) {
+        console.error("Error fetching VJs:", err);
+    }
+}
+
+fetchHeroVJs();
+
 
 async function loadPartial(id, file) {
     try {
