@@ -199,3 +199,53 @@ body {
     font-size: 0.9rem;
     opacity: 0.8;
 }
+
+
+/* 🎥 Responsive Video Container */
+
+.video-container {
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* 📄 Movie Info Styling */
+
+.movie-info {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    line-height: 1.6;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+
+/* ⬇️ Download Button */
+
+.download-btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 12px 24px;
+    background: #007bff;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}

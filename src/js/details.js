@@ -1,3 +1,6 @@
+import videojs from "video.js";
+import "video.js/dist/video-js.css";
+
 const API_URL = "https://backend-xhkx.onrender.com/Movie";
 
 function getMovieId() {
@@ -41,7 +44,15 @@ async function fetchMovie() {
         <a href="${movie.downloadLink}" target="_blank" class="download-btn">⬇️ Download</a>` : ""}
     `;
 
-
+    if (movie.filePath) {
+      videojs("bunny-player", {
+        controls: true,
+        autoplay: false,
+        preload: "auto",
+        responsive: true,
+        fluid: true,
+      });
+    }
 
 }
 
