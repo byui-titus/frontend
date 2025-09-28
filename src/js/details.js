@@ -1,3 +1,6 @@
+import videojs from "video.js";
+import "video.js/dist/video-js.css";
+
 const API_URL = "https://backend-xhkx.onrender.com/Movie";
 
 function getMovieId() {
@@ -13,25 +16,49 @@ async function fetchMovie() {
     const container = document.getElementById("movie-details");
     container.innerHTML = `
     <h1>${movie.title}</h1>
-    <video controls width="600">
-      <source src="${movie.filePath || ''}" type="video/mp4">
-      Your browser does not support video playback.
-    </video>
+
+  <div class="video-container">
+        <video
+          id="bunny-player"
+          class="video-js vjs-big-play-centered"
+          controls
+          preload="auto"
+          width="100%"
+          height="auto"
+          data-setup='{}'
+        >
+          <source src="${movie.filePath || ''}" type="application/x-mpegURL" />
+          Your browser does not support the video tag.
+        </video>
+    </div>
+    
     <p>${movie.description}</p>
     <p><strong>Genre:</strong> ${movie.genre}</p>
     <p><strong>Release Year:</strong> ${movie.releaseYear}</p>
     <p><strong>Rating:</strong> ${movie.rating}</p>
     <p><strong>Vj:</strong> ${movie.vj}</p>
-    <!-- ✅ Download Button -->
-    <a href="${movie.filePath}" download class="download-btn">⬇️ Download</a>
-  `;
+
+      ${movie.downloadLink ? `<a href="${movie.downloadLink}" target="_blank" 
+      class="download-btn">⬇️ Download</a>` : ""}
+    `;
+
+        // Initialize Video.js
+    if (movie.filePath) {
+      videojs('bunny-player', {
+        controls: true,
+        autoplay: false,
+        preload: 'auto'
+      });
+    }
+
 }
 
 fetchMovie();
 
 async function loadPartial(id, file) {
     try {
-        const response = await fetch(`/partials/${file}`);
+        const response = await fetch(` / partials / $ { file }
+    `);
         const content = await response.text();
         document.getElementById(id).innerHTML = content;
     } catch (err) {
