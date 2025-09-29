@@ -27,7 +27,7 @@ async function fetchMovie() {
           height="auto"
           data-setup='{}'
         >
-          <source src="${movie.filePath || ''}" type="application/x-mpegURL" />
+          <source src="${movie.filePath || ''}" type="${mimeType}" />
           Your browser does not support the video tag.
         </video>
       </div>
