@@ -34,8 +34,9 @@ async function fetchMovie() {
           height="auto"
           data-setup='{}'
         >
-          <source src="${movie.filePath || ''}" type="${mimeType}" />
-          Your browser does not support the video tag.
+          <source src="${movie.filePath}" type="application/x-mpegURL" />
+        <!-- fallback for mp4 if HLS not supported -->
+        <source src="${movie.filePath}" type="video/mp4" />
         </video>
       </div>
 
