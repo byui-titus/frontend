@@ -3,6 +3,13 @@ import "video.js/dist/video-js.css";
 
 const API_URL = "https://backend-xhkx.onrender.com/Movie";
 
+function mimeType(filePath) {
+    if (!filePath) return "";
+    if (filePath.endsWith(".m3u8")) return "application/x-mpegURL"; // HLS
+    if (filePath.endsWith(".mp4")) return "video/mp4"; // MP4
+    return "video/mp4"; // fallback
+}
+
 function getMovieId() {
     const params = new URLSearchParams(window.location.search);
     return params.get("id");
