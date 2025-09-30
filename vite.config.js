@@ -16,6 +16,8 @@ export default defineConfig({
                 movieDetails: resolve(__dirname, "src/detail/details.html"),
                 allMovies: resolve(__dirname, "src/all/all.html"),
                 vjs: resolve(__dirname, "src/vj/vj.html"),
+                clear: resolve(__dirname, "src/clear/clear.html"),
+                cleard: resolve(__dirname, "src/detail/clear.html"),
             },
         },
     },

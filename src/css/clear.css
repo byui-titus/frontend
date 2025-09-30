@@ -1,0 +1,70 @@
+/* basic grid for index.html */
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card {
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform .15s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+}
+
+.card h3 {
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+
+/* detail page */
+
+.details-wrapper {
+    max-width: 1000px;
+    margin: 2rem auto;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    color: #fff;
+}
+
+.poster img {
+    width: 320px;
+    border-radius: 8px;
+    display: block;
+}
+
+.info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.info h1 {
+    margin-top: 0;
+    color: #ffcc00;
+}
+
+body {
+    background: #111;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 1rem;
+    color: #ddd;
+}
