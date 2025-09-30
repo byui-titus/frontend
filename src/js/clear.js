@@ -10,7 +10,7 @@ const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 async function fetchMovies() {
     try {
         // popular movies - you can change endpoint (discover, trending, etc.)
-        const url = `${BASE}/movie/popular&&trending?api_key=${API_KEY}&page=1`;
+        const url = `${BASE}/movie/popular?api_key=${API_KEY}&page=1`;
         const res = await fetch(url);
         if (!res.ok) throw new Error(`TMDB error ${res.status}`);
         const data = await res.json();
@@ -19,6 +19,39 @@ async function fetchMovies() {
         console.error("Failed to fetch movies:", err);
         document.getElementById("movies").innerHTML = `<p>Error loading movies: ${err.message}</p>`;
     }
+}
+async function fetchMovie() {
+    try {
+        // popular movies - you can change endpoint (discover, trending, etc.)
+        const url = `${BASE}/movie/trending?api_key=${API_KEY}&page=1`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`TMDB error ${res.status}`);
+        const data = await res.json();
+        renderMovie(data.results || []);
+    } catch (err) {
+        console.error("Failed to fetch movies:", err);
+        document.getElementById("trending").innerHTML = `<p>Error loading movies: ${err.message}</p>`;
+    }
+}
+
+function renderMovie(movies) {
+    const container = document.getElementById("trending");
+    if (!movies.length) {
+        container.innerHTML = "<p>No movies found.</p>";
+        return;
+    }
+
+    container.innerHTML = movies.map(m => {
+        const poster = m.poster_path ? `${IMAGE_BASE}${m.poster_path}` : "/images/placeholder.png";
+        return `
+      <div class="card">
+        <a href="./detail/clear.html?id=${m.id}">
+          <img src="${poster}" alt="${escapeHtml(m.title)}" />
+          <h3>${escapeHtml(m.title)}</h3>
+        </a>
+      </div>
+    `;
+    }).join("");
 }
 
 function renderMovies(movies) {
@@ -47,6 +80,7 @@ function escapeHtml(str = "") {
 }
 
 document.addEventListener("DOMContentLoaded", fetchMovies);
+document.addEventListener("DOMContentLoaded", fetchMovie);
 
 
 
