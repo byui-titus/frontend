@@ -20,6 +20,19 @@ async function fetchMovies() {
         document.getElementById("movies").innerHTML = `<p>Error loading movies: ${err.message}</p>`;
     }
 }
+async function fetchMovies() {
+    try {
+        // popular movies - you can change endpoint (discover, trending, etc.)
+        const url = `${BASE}/movie/trending?api_key=${API_KEY}&page=1`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`TMDB error ${res.status}`);
+        const data = await res.json();
+        renderMovies(data.results || []);
+    } catch (err) {
+        console.error("Failed to fetch movies:", err);
+        document.getElementById("movies").innerHTML = `<p>Error loading movies: ${err.message}</p>`;
+    }
+}
 
 function renderMovies(movies) {
     const container = document.getElementById("movies");
