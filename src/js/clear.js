@@ -32,7 +32,7 @@ function renderMovies(movies) {
         const poster = m.poster_path ? `${IMAGE_BASE}${m.poster_path}` : "/images/placeholder.png";
         return `
       <div class="card">
-        <a href="/clear.html?id=${m.id}">
+        <a href="detail/clear.html?id=${m.id}">
           <img src="${poster}" alt="${escapeHtml(m.title)}" />
           <h3>${escapeHtml(m.title)}</h3>
         </a>
