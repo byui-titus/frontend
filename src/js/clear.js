@@ -34,26 +34,6 @@ async function fetchMovie() {
     }
 }
 
-function renderMovie(movies) {
-    const container = document.getElementById("trending");
-    if (!movies.length) {
-        container.innerHTML = "<p>No movies found.</p>";
-        return;
-    }
-
-    container.innerHTML = movies.map(m => {
-        const poster = m.poster_path ? `${IMAGE_BASE}${m.poster_path}` : "/images/placeholder.png";
-        return `
-      <div class="card">
-      <a window.location.href='/detail/clear.html?id=${m._id}
-          <img src="${poster}" alt="${escapeHtml(m.title)}" />
-          <h3>${escapeHtml(m.title)}</h3>
-        </a>
-      </div>
-    `;
-    }).join("");
-}
-
 function renderMovies(movies) {
     const container = document.getElementById("movies");
     if (!movies.length) {
@@ -65,6 +45,7 @@ function renderMovies(movies) {
         const poster = m.poster_path ? `${IMAGE_BASE}${m.poster_path}` : "/images/placeholder.png";
         return `
       <div class="card" >
+      <a onclick=window.location.href="/detail/clear.html?id=${m.id}">
           <img src="${poster}" alt="${escapeHtml(m.title)}" />
           <h3>${escapeHtml(m.title)}</h3>
         </a>
