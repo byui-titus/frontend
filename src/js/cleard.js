@@ -13,7 +13,7 @@ function getMovieId() {
 async function fetchMovie() {
     const id = getMovieId();
     if (!id) {
-        document.getElementById("movie-details").innerHTML = "<p>No movie id provided.</p>";
+        document.getElementById("movie-detail").innerHTML = "<p>No movie id provided.</p>";
         return;
     }
     try {
