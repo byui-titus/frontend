@@ -64,8 +64,7 @@ function renderMovies(movies) {
     container.innerHTML = movies.map(m => {
         const poster = m.poster_path ? `${IMAGE_BASE}${m.poster_path}` : "/images/placeholder.png";
         return `
-      <div class="card">
-      onclick="window.location.href='/detail/clear.html?id=${m._id}
+      <div class="card" onclick="window.location.href='/detail/clear.html?id=${m._id}>
           <img src="${poster}" alt="${escapeHtml(m.title)}" />
           <h3>${escapeHtml(m.title)}</h3>
         </a>
