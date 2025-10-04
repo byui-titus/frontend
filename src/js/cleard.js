@@ -45,7 +45,7 @@ function renderMovie(m) {
       </div>
     </div>
   `;
-    document.getElementById("movie-details").innerHTML = html;
+    document.getElementById("movie-detail").innerHTML = html;
 }
 
 function escapeHtml(str = "") {
