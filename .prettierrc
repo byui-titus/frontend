@@ -1,0 +1,9 @@
+// .prettierrc (example config)
+{
+    "printWidth": 80, // Lines will wrap at 80 characters
+    "tabWidth": 2, // Use 2 spaces for indentation
+    "semi": true, // Add semicolons at the end of statements
+    //"singleQuote": true, // Use single quotes for strings
+    "trailingComma": "es5", // Add trailing commas where valid in ES5 (objects, arrays)
+    "bracketSpacing": true // Add spaces inside curly braces in object literals
+}

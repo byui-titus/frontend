@@ -68,3 +68,31 @@ body {
     padding: 1rem;
     color: #ddd;
 }
+
+.providers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.provider {
+    text-align: center;
+    width: 90px;
+}
+
+.provider img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.provider img:hover {
+    transform: scale(1.1);
+}
+
+.provider p {
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
