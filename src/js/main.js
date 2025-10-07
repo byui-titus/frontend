@@ -13,7 +13,7 @@ async function fetchMovies() {
 
 
     // Limit to 8 movies (change 8 to whatever number you want, e.g. 6, 10)
-    const limitedMovies = movies.slice(0, 8);
+    const limitedMovies = movies.slice(0, 12);
 
     limitedMovies.forEach(movie => {
         const card = document.createElement("div");
