@@ -5,6 +5,13 @@
             <li><a href="/index.html">Home</a></li>
             <li><a href="all/all.html">All movies</a></li>
             <li><a href="clear/clear.html">Clear Copies</a></li>
+            <li><a href="login/login.html" id="loginLink">Login</a></li>
+            <li><a href="register/register.html" id="registerLink">Register</a></li>
+            <li><a href="logout/logout.html" id="logoutLink" style="display: none;">Logout</a></li>
         </ul>
     </nav>
 </header>
+<script type="module">
+    const token = localStorage.getItem('token'); const loginLink = document.getElementById('loginLink'); const registerLink = document.getElementById('registerLink'); const logoutLink = document.getElementById('logoutLink'); if (token) { loginLink.style.display
+    = 'none'; registerLink.style.display = 'none'; logoutLink.style.display = 'inline'; } else { logoutLink.style.display = 'none'; }
+</script>

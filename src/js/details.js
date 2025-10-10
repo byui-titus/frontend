@@ -3,6 +3,9 @@ import "video.js/dist/video-js.css";
 
 const API_URL = "https://backend-xhkx.onrender.com/Movie";
 
+import { requireAuth } from "../js/authGuard.js";
+requireAuth();
+
 function mimeType(filePath) {
     if (!filePath) return "";
     if (filePath.endsWith(".m3u8")) return "application/x-mpegURL"; // HLS

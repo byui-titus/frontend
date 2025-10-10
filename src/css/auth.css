@@ -1,0 +1,120 @@
+/* General Page Layout */
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2b5876);
+    color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header,
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Form Container */
+
+form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+form h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+form input::placeholder {
+    color: #ccc;
+}
+
+form input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* Submit Button */
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #4e9af1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #1c7ed6;
+}
+
+
+/* Text Links */
+
+p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+a {
+    color: #4e9af1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    form {
+        padding: 1.5rem;
+        max-width: 320px;
+    }
+    form h1 {
+        font-size: 1.5rem;
+    }
+}
