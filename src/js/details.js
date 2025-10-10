@@ -3,7 +3,7 @@ import "video.js/dist/video-js.css";
 
 const API_URL = "https://backend-xhkx.onrender.com/Movie";
 
-import { requireAuth } from "../js/authGuard.js";
+import { requireAuth } from "./authGuard";
 requireAuth();
 
 function mimeType(filePath) {
