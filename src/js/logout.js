@@ -1,6 +1,6 @@
 localStorage.removeItem('token');
 alert('You have been logged out.');
-window.location.href = 'logout/logout.html';
+window.location.href = '/logout/logout.html';
 
 async function loadPartial(id, file) {
     try {

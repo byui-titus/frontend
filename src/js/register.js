@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!res.ok) throw new Error(data.message || 'Registration failed');
 
             alert('Account created! Please login.');
-            window.location.href = 'login/login.html';
+            window.location.href = '/login/login.html';
         } catch (err) {
             alert(err.message);
         }

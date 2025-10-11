@@ -1,34 +1,37 @@
-const backendURL = 'https://backend-xhkx.onrender.com'; // change if needed
-
 if (localStorage.getItem('token')) {
     window.location.href = './index.html';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('loginForm');
-    form.addEventListener('submit', async(e) => {
-        e.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", async(e) => {
+    e.preventDefault(); // ✅ prevent reload
 
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const errorMsg = document.getElementById("errorMsg");
 
-        try {
-            const res = await fetch(`${backendURL}/auth/login`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password }),
-            });
+    try {
+        const response = await fetch("https://backend-xhkx.onrender.com/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
 
-            const data = await res.json();
-            if (!res.ok) throw new Error(data.message || 'Login failed');
+        const data = await response.json();
 
-            localStorage.setItem('token', data.token);
-            alert('Login successful!');
-            window.location.href = '/index.html';
-        } catch (err) {
-            alert(err.message);
+        if (!response.ok) {
+            errorMsg.textContent = data.message || "Invalid login credentials";
+            return;
         }
-    });
+
+        // ✅ Save token to localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        // ✅ Redirect to home or detail page
+        window.location.href = "/index.html";
+    } catch (err) {
+        errorMsg.textContent = "Something went wrong. Please try again.";
+    }
 });
 
 async function loadPartial(id, file) {
