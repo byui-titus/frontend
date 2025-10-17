@@ -3,7 +3,7 @@
         <h1 class="logo">TTMA-MovieSite</h1>
         <ul class="nav-links">
             <li><a href="/index.html">Home</a></li>
-            <li><a href="all/all.html">All movies</a></li>
+            <li><a href="/all/all.html">All Movies</a></li>
             <li><a href="/clear/clear.html">Clear Copies</a></li>
             <li><a href="/login/login.html" id="loginLink">Login</a></li>
             <li><a href="/login/register.html" id="registerLink">Register</a></li>
@@ -11,34 +11,3 @@
         </ul>
     </nav>
 </header>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const token = localStorage.getItem("token");
-        const loginLink = document.getElementById("loginLink");
-        const registerLink = document.getElementById("registerLink");
-        const logoutLink = document.getElementById("logoutLink");
-
-        if (token) {
-            // User is logged in
-            if (loginLink) loginLink.style.display = "none";
-            if (registerLink) registerLink.style.display = "none";
-            if (logoutLink) logoutLink.style.display = "inline";
-        } else {
-            // User is NOT logged in
-            if (logoutLink) logoutLink.style.display = "none";
-            if (loginLink) loginLink.style.display = "inline";
-            if (registerLink) registerLink.style.display = "inline";
-        }
-
-        // ✅ Handle Logout click
-        if (logoutLink) {
-            logoutLink.addEventListener("click", (e) => {
-                e.preventDefault();
-                localStorage.removeItem("token");
-                localStorage.removeItem("user"); // optional if you store user info
-                window.location.href = "/login/login.html";
-            });
-        }
-    });
-</script>
