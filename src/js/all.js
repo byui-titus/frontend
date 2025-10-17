@@ -56,35 +56,33 @@ async function loadPartial(id, file) {
     } catch (err) {
         console.error("Error loading partial:", file, err);
     }
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const token = localStorage.getItem("token");
-        const loginLink = document.getElementById("loginLink");
-        const registerLink = document.getElementById("registerLink");
-        const logoutLink = document.getElementById("logoutLink");
+function updateAuthLinks() {
+  const token = localStorage.getItem("token");
+  const loginLink = document.getElementById("loginLink");
+  const registerLink = document.getElementById("registerLink");
+  const logoutLink = document.getElementById("logoutLink");
 
-        if (token) {
-            // User is logged in
-            if (loginLink) loginLink.style.display = "none";
-            if (registerLink) registerLink.style.display = "none";
-            if (logoutLink) logoutLink.style.display = "inline";
-        } else {
-            // User is NOT logged in
-            if (logoutLink) logoutLink.style.display = "none";
-            if (loginLink) loginLink.style.display = "inline";
-            if (registerLink) registerLink.style.display = "inline";
-        }
+  if (token) {
+    // ✅ User is logged in
+    loginLink.style.display = "none";
+    registerLink.style.display = "none";
+    logoutLink.style.display = "inline-block";
 
-        // ✅ Handle Logout click
-        if (logoutLink) {
-            logoutLink.addEventListener("click", (e) => {
-                e.preventDefault();
-                localStorage.removeItem("token");
-                localStorage.removeItem("user"); // optional if you store user info
-                window.location.href = "/login/login.html";
-            });
-        }
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      alert("You have been logged out.");
+      window.location.href = "/index.html";
     });
+  } else {
+    // ✅ User not logged in
+    loginLink.style.display = "inline-block";
+    registerLink.style.display = "inline-block";
+    logoutLink.style.display = "none";
+  }
 }
 
 // Load Header & Footer
