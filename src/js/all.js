@@ -53,6 +53,9 @@ async function loadPartial(id, file) {
         const response = await fetch(`/partials/${file}`);
         const content = await response.text();
         document.getElementById(id).innerHTML = content;
+        if (file === "header.html") {
+      updateAuthLinks();
+    }
     } catch (err) {
         console.error("Error loading partial:", file, err);
     }

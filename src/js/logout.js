@@ -7,6 +7,10 @@ async function loadPartial(id, file) {
         const response = await fetch(`/partials/${file}`);
         const content = await response.text();
         document.getElementById(id).innerHTML = content;
+
+        if (file === "header.html") {
+            updateAuthLinks();
+        }
     } catch (err) {
         console.error("Error loading partial:", file, err);
     }
@@ -14,12 +18,19 @@ async function loadPartial(id, file) {
 
 function updateAuthLinks() {
     const token = localStorage.getItem("token");
+
     const loginLink = document.getElementById("loginLink");
     const registerLink = document.getElementById("registerLink");
     const logoutLink = document.getElementById("logoutLink");
 
+    if (!loginLink || !registerLink || !logoutLink) {
+        console.warn("Auth links not found in DOM yet. Retrying...");
+        setTimeout(updateAuthLinks, 300); // Retry after 300ms (in case header loads slow)
+        return;
+    }
+
     if (token) {
-        // ✅ User is logged in
+        // Logged in
         loginLink.style.display = "none";
         registerLink.style.display = "none";
         logoutLink.style.display = "inline-block";
@@ -32,13 +43,12 @@ function updateAuthLinks() {
             window.location.href = "/index.html";
         });
     } else {
-        // ✅ User not logged in
+        // Logged out
         loginLink.style.display = "inline-block";
         registerLink.style.display = "inline-block";
         logoutLink.style.display = "none";
     }
 }
-
 // Load Header & Footer
 document.addEventListener("DOMContentLoaded", () => {
     loadPartial("header-placeholder", "header.html");
