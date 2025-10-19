@@ -1,121 +1,130 @@
-/* General Page Layout */
+/* Center form on the screen */
 
 body {
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #1e1e2f, #2b5876);
-    color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #121212, #1f1f1f);
+    color: #fff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-header,
-footer {
-    text-align: center;
-    padding: 15px 0;
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin: 0;
 }
 
 
-/* Form Container */
+/* Container for the form */
 
-form {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 380px;
-    text-align: center;
+.form-container {
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    text-align: center;
 }
 
-form h1 {
+
+/* Headings */
+
+.form-container h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #fff;
+    color: #ffcc00;
 }
 
-form input {
+
+/* Labels and Inputs */
+
+label {
+    display: block;
+    text-align: left;
+    margin: 0.5rem 0 0.2rem;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
     width: 100%;
-    padding: 12px 15px;
-    margin: 10px 0;
-    border: none;
+    padding: 0.75rem;
     border-radius: 8px;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    border: 1px solid #555;
     outline: none;
-    transition: background 0.3s ease;
-}
-
-form input::placeholder {
-    color: #ccc;
-}
-
-form input:focus {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-
-/* Submit Button */
-
-form button {
-    width: 100%;
-    padding: 12px;
-    background: #4e9af1;
+    background-color: #222;
     color: #fff;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #ffcc00;
+}
+
+
+/* Button */
+
+button {
+    width: 100%;
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 10px;
+    padding: 0.75rem;
+    margin-top: 1rem;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-form button:hover {
-    background: #1c7ed6;
+button:hover {
+    background-color: #ffdb4d;
 }
 
 
-/* Text Links */
+/* Paragraph links */
 
 p {
     margin-top: 1rem;
     font-size: 0.9rem;
 }
 
-a {
-    color: #4e9af1;
+p a {
+    color: #ffcc00;
     text-decoration: none;
     font-weight: bold;
 }
 
-a:hover {
+p a:hover {
     text-decoration: underline;
+}
+
+
+/* Error message */
+
+#errorMsg {
+    margin-top: 1rem;
+    color: #ff6666;
+}
+
+
+/* Make header/footer invisible for form focus */
+
+#header-placeholder,
+#footer-placeholder {
+    display: none;
 }
 
 
 /* Responsive */
 
-
-/*@media (max-width: 480px) {
-    form {
+@media (max-width: 500px) {
+    .form-container {
         padding: 1.5rem;
-        max-width: 450px;
+        width: 90%;
     }
-    form h1 {
-        font-size: 1.5rem;
-    }
-}*/
+}
